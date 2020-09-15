@@ -47,6 +47,10 @@ const fubu = (function () {
     console.log('hola');
   };
 
+  fubu.despedir = () => {
+    console.log('despedir');
+  };
+
   return fubu;
 })();
 
