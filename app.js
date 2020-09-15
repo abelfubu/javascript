@@ -19,6 +19,14 @@ const fubu = (function () {
     return temp;
   };
 
+  fubu.reduce = function (array, callback, initialValue) {
+    if (!initialValue) initialValue = 0;
+    for (let i = 0; i < array.length; i++) {
+      initialValue += callback(initialValue, array[i], i, array);
+    }
+    return initialValue;
+  };
+
   return fubu;
 })();
 
@@ -40,3 +48,7 @@ const result = nums.reduce((prev, num) => {
 }, 100);
 
 console.log(result);
+
+const reduce = fubu.reduce(nums, (prev, num) => prev + num);
+
+console.log(reduce);
