@@ -43,6 +43,10 @@ const fubu = (function () {
     }
   };
 
+  fubu.saludar = () => {
+    console.log('hola');
+  };
+
   return fubu;
 })();
 
