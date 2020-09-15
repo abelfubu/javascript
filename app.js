@@ -11,6 +11,14 @@ const fubu = (function () {
     return temp;
   };
 
+  fubu.map = function (array, callback) {
+    const temp = [];
+    for (let i = 0; i < array.length; i++) {
+      temp.push(callback(array[i], i, array));
+    }
+    return temp;
+  };
+
   return fubu;
 })();
 
@@ -18,7 +26,10 @@ const nums = [1, 2, 3, 4, 5, 6, 7, 8];
 
 const copia = fubu.filter(nums, (num) => num % 2 === 0);
 
+const copiaDoble = fubu.map(nums, (num) => num * 2);
+
 console.log(copia);
+console.log(copiaDoble);
 
 const result = nums.reduce((prev, num) => {
   if (num === 2) {
