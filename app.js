@@ -43,14 +43,6 @@ const fubu = (function () {
     }
   };
 
-  fubu.saludar = () => {
-    console.log('hola que tal');
-  };
-
-  fubu.despedir = () => {
-    console.log('despedir');
-  };
-
   return fubu;
 })();
 
