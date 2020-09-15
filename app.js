@@ -44,7 +44,7 @@ const fubu = (function () {
   };
 
   fubu.saludar = () => {
-    console.log('hola');
+    console.log('hola que tal');
   };
 
   return fubu;
