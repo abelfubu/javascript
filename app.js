@@ -22,7 +22,8 @@ const fubu = (function () {
   fubu.reduce = function (array, callback, initialValue) {
     if (!initialValue) initialValue = 0;
     for (let i = 0; i < array.length; i++) {
-      initialValue += callback(initialValue, array[i], i, array);
+      initialValue = callback(initialValue, array[i], i, array);
+      debugger;
     }
     return initialValue;
   };
