@@ -1,7 +1,7 @@
 const fubu = (function () {
   const fubu = {};
 
-  fubu.filter = function (array, callback) {
+  fubu.filter = (array, callback) => {
     const temp = [];
     for (let i = 0; i < array.length; i++) {
       if (callback(array[i], i, array)) {
@@ -11,7 +11,7 @@ const fubu = (function () {
     return temp;
   };
 
-  fubu.map = function (array, callback) {
+  fubu.map = (array, callback) => {
     const temp = [];
     for (let i = 0; i < array.length; i++) {
       temp.push(callback(array[i], i, array));
@@ -19,37 +19,30 @@ const fubu = (function () {
     return temp;
   };
 
-  fubu.reduce = function (array, callback, initialValue) {
+  fubu.reduce = (array, callback, initialValue) => {
     if (!initialValue) initialValue = 0;
     for (let i = 0; i < array.length; i++) {
       initialValue = callback(initialValue, array[i], i, array);
-      debugger;
     }
     return initialValue;
+  };
+
+  fubu.find = (array, callback) => {
+    for (let i = 0; i < array.length; i++) {
+      if (callback(array[i], i, array)) {
+        return array[i];
+      }
+    }
   };
 
   return fubu;
 })();
 
 const nums = [1, 2, 3, 4, 5, 6, 7, 8];
+const people = [
+  { name: 'Abel', edad: 39 },
+  { name: 'Cris', edad: 27 },
+];
 
-const copia = fubu.filter(nums, (num) => num % 2 === 0);
-
-const copiaDoble = fubu.map(nums, (num) => num * 2);
-
-console.log(copia);
-console.log(copiaDoble);
-
-const result = nums.reduce((prev, num) => {
-  if (num === 2) {
-    return prev + num;
-  } else {
-    return prev;
-  }
-}, 100);
-
-console.log(result);
-
-const reduce = fubu.reduce(nums, (prev, num) => prev + num);
-
-console.log(reduce);
+console.log(fubu.find(nums, (num) => num === 2));
+console.log(fubu.find(people, (person) => person.name === 'Cris'));
